@@ -1,0 +1,10 @@
+extends base.pug
+
+block contents
+    div.p-8.mt-8
+        h1.text-2xl.font-bold.text-center 가입하기
+        form.flex.flex-col.mt-12.space-y-2(action="/signup" method="POST")
+            input.rounded.border.border-gray-200.p-2(name="email" type="email" placeholder="이메일")
+            input.rounded.border.border-gray-200.p-2(name="password" type="password" placeholder="비밀번호")
+            input.rounded.border.border-gray-200.p-2(type="password" placeholder="비밀번호 확인")
+            button.primary-btn.red-btn 가입하기

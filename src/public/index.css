@@ -1,0 +1,47 @@
+.primary-btn {
+    display: flex;
+    width: 100%;
+    height: 56px;
+    border-radius: 12px;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    padding-left: 16px;
+    padding-right: 16px;
+    font-size: 16px;
+}
+
+.primary-btn .logo {
+    justify-self: flex-start;
+    width: 32px;
+}
+
+.red-btn {
+    background-color: rgb(220, 38, 38);
+    color: white;
+}
+
+.text {
+    flex-grow: 1;
+    text-align: center;
+}
+
+#kakao-login {
+    background-color: #fee500;
+    color: rgba(0, 0, 0, 0.85);
+}
+
+#fb-login {
+    background-color: #1877F2;
+    color: white;
+    font-weight: 600;
+}
+
+#naver-login {
+    background-color: #03c75a;
+    color: white;
+}
+
+#naver-login .logo {
+    width: 32px;
+}
