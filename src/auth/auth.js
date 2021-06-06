@@ -1,8 +1,5 @@
 // @ts-check
 
-const { v4: uuidv4 } = require('uuid')
-const bcrypt = require('bcrypt')
-
 const { signJWT } = require('./jwt')
 const { getUsersCollection } = require('../mongo')
 
@@ -44,27 +41,7 @@ async function createUserOrLogin({
     platformUserId,
   })
 
-  if (existingUser) {
-    return {
-      userId: existingUser.id,
-      accessToken: await signJWT(existingUser.id),
-    }
-  }
-
-  const userId = uuidv4()
-  await users.insertOne({
-    id: userId,
-    platformUserId,
-    platform,
-    nickname,
-    profileImageURL,
-    verified: true, // OAuth 로그인의 경우 access token을 발급한 vendor를 통해 인증된 것으로 봅니다.
-  })
-
-  return {
-    userId,
-    accessToken: await signJWT(userId),
-  }
+  // TODO
 }
 
 /**
@@ -84,13 +61,7 @@ function setAccessTokenCookie(res, token) {
  */
 async function encryptPassword(password) {
   return new Promise((resolve, reject) => {
-    bcrypt.hash(password, 10, (err, res) => {
-      if (err) {
-        reject(err)
-      } else {
-        resolve(res)
-      }
-    })
+    // TODO
   })
 }
 
@@ -101,13 +72,7 @@ async function encryptPassword(password) {
  */
 async function comparePassword(plainText, password) {
   return new Promise((resolve, reject) => {
-    bcrypt.compare(plainText, password, (err, res) => {
-      if (err) {
-        reject(err)
-      } else {
-        resolve(res)
-      }
-    })
+    // TODO
   })
 }
 
