@@ -9,7 +9,6 @@ app.use(express.urlencoded({ extended: true })) // form POST를 처리하기 위
 app.set('views', 'src/views')
 app.set('view engine', 'pug')
 
-const userRouter = require('./routers/user')
 const mainRouter = require('./routers/main')
 const { setupNaverLogin } = require('./oauth/naver')
 const { setupKakaoLogin } = require('./oauth/kakao')
@@ -23,7 +22,6 @@ setupNaverLogin(app)
 setupKakaoLogin(app)
 setupFacebookLogin(app)
 
-app.use('/users', userRouter)
 app.use('/public', express.static('src/public'))
 app.use('/', mainRouter)
 
