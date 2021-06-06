@@ -20,6 +20,11 @@ const router = express.Router()
 const ses = new SESV2()
 
 router.get('/', async (req, res) => {
+  /*
+  TODOs
+  - 다른 사람의 글에는 삭제 버튼을 보여주지 말 것
+  */
+
   if (req.user) {
     const postsCol = await getPostsCollection()
     const postsCursor = postsCol.aggregate([
@@ -31,6 +36,11 @@ router.get('/', async (req, res) => {
           as: 'users',
         },
       },
+      {
+        $sort: {
+          createdAt: -1,
+        },
+      },
     ])
     const posts = (await postsCursor.toArray()).map(({ users, ...rest }) => ({
       ...rest,
@@ -38,6 +48,7 @@ router.get('/', async (req, res) => {
     }))
 
     res.render('home', {
+      user: req.user,
       posts,
       APP_CONFIG_JSON,
     })
