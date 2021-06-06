@@ -12,14 +12,26 @@ const client = new MongoClient(uri, {
 
 let didConnect = false
 
-async function getUsersCollection() {
+/**
+ * @param {string} name
+ */
+async function getCollection(name) {
   if (!didConnect) {
     await client.connect()
     didConnect = true
   }
-  return client.db().collection('users')
+  return client.db().collection(name)
+}
+
+async function getUsersCollection() {
+  return getCollection('users')
+}
+
+async function getPostsCollection() {
+  return getCollection('posts')
 }
 
 module.exports = {
   getUsersCollection,
+  getPostsCollection,
 }

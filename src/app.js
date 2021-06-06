@@ -10,6 +10,7 @@ app.set('views', 'src/views')
 app.set('view engine', 'pug')
 
 const mainRouter = require('./routers/main')
+const postsRouter = require('./routers/post')
 const { setupNaverLogin } = require('./oauth/naver')
 const { setupKakaoLogin } = require('./oauth/kakao')
 const { setupFacebookLogin } = require('./oauth/facebook')
@@ -23,6 +24,7 @@ setupKakaoLogin(app)
 setupFacebookLogin(app)
 
 app.use('/public', express.static('src/public'))
+app.use('/posts', postsRouter)
 app.use('/', mainRouter)
 
 // @ts-ignore
