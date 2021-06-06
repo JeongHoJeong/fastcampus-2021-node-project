@@ -44,6 +44,7 @@ function setupNaverLogin(app) {
     const user = await createUserOrLogin({
       platform: 'naver',
       platformUserId: profile.id,
+      nickname: profile.name,
     })
     setAccessTokenCookie(res, user.accessToken)
     res.status(200).end()

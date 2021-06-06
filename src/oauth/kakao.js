@@ -73,6 +73,8 @@ function setupKakaoLogin(app) {
     const user = await createUserOrLogin({
       platform: 'kakao',
       platformUserId: me.id.toString(),
+      nickname: me.kakao_account.profile.nickname,
+      profileImageURL: me.kakao_account.profile.profile_image_url,
     })
     setAccessTokenCookie(res, user.accessToken)
     res.redirect('/')
