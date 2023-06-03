@@ -1,4 +1,4 @@
-const HOST = 'b0eb064f57d5.ngrok.io'
+const HOST = 'https://1191-211-104-206-12.ngrok-free.app'
 
 /* eslint-disable prefer-destructuring */
 
